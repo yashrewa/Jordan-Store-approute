@@ -2,16 +2,17 @@ import Image from 'next/image'
 import HeroBanner from './components/HeroBanner'
 import ProductCard from './components/ProductCard'
 import Wrapper from './components/Wrapper'
-import { useFetchFromNext } from './utils/api'
-
+// import { headers } from '../../next.config'
+import { baseUrl } from './utils/baseUrl'
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-  // const data = await res.json();
+  console.log()
+  // const res = await fetch(`/api/products`);
+  const res = await fetch(`${baseUrl}/api/products`);
   const products = await res.json();
+  // const data = await res.json();
   return (
     <main>
-      {/* {console.log(data.message)} */}
       <HeroBanner />
         <Wrapper>
             <div className="text-center max-w-[800px] mx-auto my-[50px] md: my- [80px]">

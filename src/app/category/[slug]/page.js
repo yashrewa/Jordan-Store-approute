@@ -1,10 +1,11 @@
 import ProductCard from "@/app/components/ProductCard";
 import Wrapper from "@/app/components/Wrapper";
 // import { useFetchFromNext } from "@/utils/api";
+import { baseUrl } from "@/app/utils/baseUrl";
 
 const Category = async ({ category, products, params }) => {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/categories/${params.slug}`);
+    const res = await fetch(`${baseUrl}/api/categories/${params.slug}`);
     category = await res.json();
     products = category.data;
     return (

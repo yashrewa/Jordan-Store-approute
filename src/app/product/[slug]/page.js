@@ -10,10 +10,8 @@ import { useRecoilState } from "recoil";
 import { useParams } from "next/navigation";
 
 
-
-
-
 const ProductDeatils = () => {
+    
     const slug = useParams().slug
     console.log(slug)
 
@@ -150,41 +148,3 @@ const ProductDeatils = () => {
 };
 
 export default ProductDeatils;
-
-// export async function getStaticPaths() {
-//     // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/products`)
-//     // const products = await res.json()
-//     let paths = [];
-
-//     if (process.env.NODE_ENV === 'development') {
-//         const products = await useFetchFromNext("products");
-
-//         paths = products.data.map((p) => ({
-//             params: {
-//                 slug: p._id
-//             }
-//         }));
-//     }
-
-//     const products = await useFetchFromNext("products");
-//     return {
-//         paths,
-//         fallback: false
-//     };
-// }
-
-// export async function getStaticProps({ params: { slug } }) {
-
-// const productRes = await useFetchFromNext(`product/${slug}`);
-// const productsRes = await useFetchFromNext(`products`);
-
-// product = productRes.data;
-// products = productsRes.data;
-//     console.log(product);
-//     return {
-//         props: {
-//             product,
-//             products: productRes.data
-//         }
-//     };
-// }

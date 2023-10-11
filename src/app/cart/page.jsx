@@ -6,6 +6,7 @@ import Wrapper from "@/app/components/Wrapper";
 import Cartitems from "@/app/components/Cartitems";
 import { useRecoilValue } from "recoil";
 import { cartState } from "@/app/store/atoms/cart";
+import { baseUrl } from "../utils/baseUrl";
 
 const Cart = () => {
   const cart = useRecoilValue(cartState);
@@ -18,7 +19,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-checkout-session`, {
+    const res = await fetch(`${baseUrl}/api/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
