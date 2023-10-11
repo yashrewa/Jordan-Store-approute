@@ -6,11 +6,8 @@ import Wrapper from './components/Wrapper'
 import { baseUrl } from './utils/baseUrl'
 
 export default async function Home() {
-  console.log()
-  // const res = await fetch(`/api/products`);
   const res = await fetch(`${baseUrl}/api/products`);
   const products = await res.json();
-  // const data = await res.json();
   return (
     <main>
       <HeroBanner />
