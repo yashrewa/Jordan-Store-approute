@@ -8,6 +8,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { cartState } from "@/app/store/atoms/cart";
 import { useRecoilState } from "recoil";
 import { useParams } from "next/navigation";
+import { baseUrl } from "@/app/utils/baseUrl";
 
 
 const ProductDeatils = () => {
@@ -25,8 +26,8 @@ const ProductDeatils = () => {
         console.log(products)
     }, [slug])
     const fetchData = async () => {
-        const productRes = await UseFetchFromNext(`/api/product/${slug}`);
-        const productsRes = await UseFetchFromNext(`/api/products`);
+        const productRes = await UseFetchFromNext(`${baseUrl}/api/product/${slug}`);
+        const productsRes = await UseFetchFromNext(`${baseUrl}/api/products`);
         setProduct(productRes.data);
         setProducts(productsRes.data);
     }
