@@ -12,7 +12,7 @@ import { baseUrl } from "@/app/utils/baseUrl";
 
 
 const ProductDeatils = () => {
-    
+
     const slug = useParams().slug
     console.log(slug)
 
@@ -23,11 +23,11 @@ const ProductDeatils = () => {
     useEffect(() => {
         fetchData();
         console.log(product)
-        console.log(products)
+        // console.log(products)
     }, [slug])
     const fetchData = async () => {
-        const productRes = await UseFetchFromNext(`${baseUrl}/api/product/${slug}`);
-        const productsRes = await UseFetchFromNext(`${baseUrl}/api/products`);
+        const productRes = await UseFetchFromNext(`/product/${slug}`);
+        const productsRes = await UseFetchFromNext(`/products`);
         setProduct(productRes.data);
         setProducts(productsRes.data);
     }
@@ -55,9 +55,9 @@ const ProductDeatils = () => {
         }
     };
     console.log(cart);
-    return !product && !products ?  (<></>)
+    return !product && !products ? (<></>)
         :
-         (
+        (
             <div className="w-full md:py-20">
                 <Wrapper>
                     <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
@@ -106,8 +106,13 @@ const ProductDeatils = () => {
                                                     : "cursor-pointer"
                                                     } ${selectedSize === size.size ? "border-black" : ""}`}
                                                 onClick={(e) => {
-                                                    setSelectedSize(size.size);
-                                                    setShowError(false);
+                                                    if (size.enabled) {
+                                                        setSelectedSize(size.size);
+                                                        setShowError(false);
+                                                    }
+                                                    else {
+                                                        setShowError(true);
+                                                    }
                                                 }}
                                             >
                                                 {size.size}

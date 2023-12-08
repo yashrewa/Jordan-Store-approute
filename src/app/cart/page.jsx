@@ -4,22 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import Wrapper from "@/app/components/Wrapper";
 import Cartitems from "@/app/components/Cartitems";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { cartState } from "@/app/store/atoms/cart";
 import { baseUrl } from "../utils/baseUrl";
 
 const Cart = () => {
-  const cart = useRecoilValue(cartState);
+  // const cart = useRecoilValue(cartState);
+  const [cart, setCart] = useRecoilState(cartState);
   const totalPrice = () => {
     let total = 0;
     cart.forEach((item) => {
       total += item.price * item.quantity;
     });
+    // setCart(prevState => [...prevState, total])
+    // setTotalPriceRealTime(total);
     return total;
   };
 
   const handleCheckout = async () => {
-    const res = await fetch(`${baseUrl}/api/create-checkout-session`, {
+    const res = await fetch(`${baseUrl}/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

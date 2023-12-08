@@ -1,12 +1,12 @@
 import ProductCard from "@/app/components/ProductCard";
 import Wrapper from "@/app/components/Wrapper";
+import { UseFetchFromNext } from "@/app/utils/api";
 // import { useFetchFromNext } from "@/utils/api";
 import { baseUrl } from "@/app/utils/baseUrl";
 
 const Category = async ({ category, products, params }) => {
 
-    const res = await fetch(`${baseUrl}/api/categories/${params.slug}`);
-    category = await res.json();
+    category = await UseFetchFromNext('/categories/${params.slug}')
     products = category.data;
     return (
         <div className="w-full md:py-20">

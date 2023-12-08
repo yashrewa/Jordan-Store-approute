@@ -41,8 +41,8 @@ const Header = () => {
   },[])
 
   const fetchCategories = async ()=> {
-      const categories = await UseFetchFromNext(`/api/categories`)
-      console.log(categories)
+      const categories = await UseFetchFromNext(`/categories`)
+      // console.log(categories)
       setCategories(categories);
   }
 
