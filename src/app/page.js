@@ -6,7 +6,7 @@ import Wrapper from './components/Wrapper'
 import { baseUrl } from './utils/baseUrl'
 
 export default async function Home() {
-  const res = await fetch(`http://localhost:3000/api/products`);
+  const res = await fetch(`https://strong-return-401509.el.r.appspot.com/products`);
   const products = await res.json();
 
 
