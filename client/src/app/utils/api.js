@@ -1,6 +1,6 @@
 
 export const UseFetchFromNext = async (endpoint) =>{
-    const res = await fetch(`https://strong-return-401509.el.r.appspot.com${endpoint}`)
+    const res = await fetch(`https://jordan-store-approute.onrender.com${endpoint}`)
     const data = await res.json()
     console.log(data)
     return data;
